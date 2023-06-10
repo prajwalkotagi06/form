@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row{
+            border: 2px solid;
+            width: 400px;
+            height: 400px;
+
+        }
+        .column{
+            float: left;
+            
+        }
+        .column{
+            width: 50%;
+        }
+        .column{
+            width: 50%;
+        }
+        h1{
+            text-align: center;
+        }
+        #imageContainer img{
+            width: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <form action="" method="get">
+        <label>Name</label>
+        <input type="text" id="name">
+        <label>last</label>
+        <input type="text" id="last"><br>
+        <label>DOB</label>
+        <input type="date" id="date"><br>
+        <label>Phone No:</label>
+        <input type="tel" id="phone"><br>
+        <label>Choose Your image</label>
+        <input type="file" id="upload" accept="image/*"><br>
+        <label>Address</label>
+        <input type="text" id="add"><br>
+        <label>Blood group</label>
+        <select id="bg">
+            
+            <option>A</option>
+            <option>A+</option>
+            <option>AB</option>
+            <option>AB+</option>
+            <option>O</option>
+        </select>
+        
+        <input type="button" id="btn" value="submit" onclick="return demo()">
+    </form>
+    <div class="row">
+        <h1>Identity card</h1>
+        <div  class=" column container" id="imageContainer" ><img src="" alt="image"/></div>
+        <div class="column last">
+            <p id="a1">Name</p>
+            <p id="a2">Last</p>
+            <p id="a3">date</p>
+            <p id="a4">phone no</p>
+            <p id="a6">adress</p>
+            <p id="a7">blood group</p>
+            
+        </div>
+        
+    </div>
+    <script>
+
+        //printing data
+        function demo(){
+            let name = document.getElementById("name").value;
+            let last = document.getElementById("last").value;
+            let date = document.getElementById("date").value;
+            let phone = document.getElementById("phone").value;
+            // let file = document.getElementById("file").value;
+            let add = document.getElementById("add").value;
+            let bg = document.getElementById("bg").value;
+          
+            document.getElementById("a1").innerHTML = name;
+            document.getElementById("a2").innerHTML = last;
+            document.getElementById("a3").innerHTML = date;
+            document.getElementById("a4").innerHTML = phone;
+            // document.getElementById("display").innerHTML = file;
+            document.getElementById("a6").innerHTML = add;
+            document.getElementById("a7").innerHTML = bg;
+        }
+
+        //accept image
+        document.getElementById('upload').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var image = document.createElement('img');
+                image.src = e.target.result;
+
+                var imageContainer = document.getElementById('imageContainer');
+                imageContainer.innerHTML = '';
+                imageContainer.appendChild(image);
+            };
+
+            reader.readAsDataURL(file);
+        });
+        
+        
+        
+    </script>
+</body>
+</html>
